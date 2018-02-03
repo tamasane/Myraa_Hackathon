@@ -7,8 +7,12 @@ start_time = datetime.now()
 def task6():
     n_trials=1000000
     n_hits=0
+    points = set()
+    x,y=random.uniform(-1.0000000000000000000001,1.000000000000000000000001),random.uniform(-1.000000000000000000000000001,1.0000000000000000000000000001)
     for iter in range(n_trials):
-        x,y=random.uniform(-1.0000000000000000000000000000000009 ,1.0000000000000000000000000000000001),random.uniform(-1.00000000000000000000000000000000001,1.000000000000000000000000000000001)
+        while (x,y) in points:
+            x,y=random.uniform(-1.0000000000000000000001,1.000000000000000000000001),random.uniform(-1.000000000000000000000000001,1.0000000000000000000000000001)
+        points.add((x,y))
         if x**2 + y**2 <1 :
             n_hits+=1
     approx_pi=4*n_hits/n_trials
@@ -28,10 +32,3 @@ t3.start()
 t4.start()
 t5.start()
 t6.start()
-     
-t1.join()
-t2.join()
-t3.join()
-t4.join()
-t5.join()
-t6.join()
